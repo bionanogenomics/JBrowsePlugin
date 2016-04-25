@@ -254,13 +254,17 @@ define([
                                             featureMap[feature.name] = feature;
                                             feature = thisB._labelData(feature);
                                             var map = feature.subfeatures[0].map;
-                                            var refSub = thisB.refBareFeatures[feature.seq_id][map.ref];
-                                            var start = 1;
-                                            while (!refSub && start < feature.subfeatures.length) {
-                                                map = feature.subfeatures[start].map;
+                                            var refSub = null;
+                                            var start  = 1;
+                                            if (feature.seq_id in thisB.refBareFeatures) {
                                                 refSub = thisB.refBareFeatures[feature.seq_id][map.ref];
-                                                start++;
+                                                while (!refSub && start < feature.subfeatures.length) {
+                                                    map = feature.subfeatures[start].map;
+                                                    refSub = thisB.refBareFeatures[feature.seq_id][map.ref];
+                                                    start++;
+                                                }
                                             }
+                                            
                                             var queSub = thisB._getQCSubFeature(feature.subfeatures, map.query);
 
                                             if (refSub && queSub) {
