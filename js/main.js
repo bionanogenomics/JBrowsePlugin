@@ -9,7 +9,8 @@ define([
            'dijit/MenuItem',
            'JBrowse/Plugin',
            './View/FileDialog',
-           './View/CMapFileDialog'
+           './View/CMapFileDialog',
+           'dojox/widget/Toaster'
        ],
        function(
            declare,
@@ -41,7 +42,7 @@ return declare( JBrowsePlugin,
         }, this);
         // this.browser.afterMilestone('initView',function() {
         //   this.browser.addGlobalMenuItem('file',new dijitMenuItem(
-            
+
         //     {
         //       label : 'Add BioNanoGenomics CMap file',
         //       iconClass : 'bionanoUploadIcon',
